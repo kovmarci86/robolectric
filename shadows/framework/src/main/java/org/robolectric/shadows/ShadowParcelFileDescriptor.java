@@ -33,7 +33,7 @@ public class ShadowParcelFileDescriptor {
 
   @Implementation
   public static ParcelFileDescriptor[] createPipe() throws IOException {
-    File file = new File(RuntimeEnvironment.application.getCacheDir(), "pipe");
+    File file = new File(RuntimeEnvironment.application.getCacheDir(), "pipe-" + System.nanoTime());
     if (file.exists() && !file.delete()) {
       throw new IOException("Cannot delete pipe file: " + file.getAbsolutePath());
     }
